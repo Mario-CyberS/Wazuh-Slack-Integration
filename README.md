@@ -83,6 +83,10 @@ You should receive the Hello, World! message in your Slack channel.
 Then make sure to make your manager the “channel manager” for the slack channel, also add your manager as a collaborator on the slack app you created for this channel. This way they have full control.
 Last you can go ahead and add your own filters to the config to customize the alerts you want to receive
 
+---
+
+### 👨‍💻 Author
+Mario Tagaras | Florida State University Alum
 
 
 
