@@ -57,3 +57,42 @@ SSH into your Wazuh server and edit the Wazuh manager config:
 ```bash
 sudo nano /var/ossec/etc/ossec.conf
 ```
+Insert this block in the <integration> section:
+```bash
+<integration>
+  <name>slack</name>
+  <hook_url>https://hooks.slack.com/services/your/webhook/url</hook_url>
+  <alert_format>json</alert_format>
+  <level>12</level>
+</integration>
+```
+⚠️ Important: Remove the angle brackets (<>) and paste the actual Slack webhook URL. If you forget, Wazuh Manager will fail to restart.
+
+### 3. Restart Wazuh Manager
+```bash
+sudo systemctl restart wazuh-manager
+```
+
+### 4. Test Slack Integration
+Send a test message to your webhook:
+```bash
+curl -X POST -H 'Content-type: application/json' \
+--data '{"text":"Hello, World!"}' https://hooks.slack.com/services/your/webhook/url
+```
+You should receive the Hello, World! message in your Slack channel.
+Then make sure to make your manager the “channel manager” for the slack channel, also add your manager as a collaborator on the slack app you created for this channel. This way they have full control.
+Last you can go ahead and add your own filters to the config to customize the alerts you want to receive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
